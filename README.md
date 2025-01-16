@@ -40,7 +40,7 @@ DB_USER=root
 DB_PASSWORD=root
 ```
 
-### docker start
+### serrealDB  docker 
 start serrealDB 
 ```
 docker compose up -d
