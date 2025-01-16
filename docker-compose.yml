@@ -1,0 +1,32 @@
+version: "3"
+services:
+  surrealdb:
+    container_name: surreal
+    restart: always
+    env_file:
+      - .env
+    entrypoint:
+      - /surreal
+      - start
+      - --user
+      - $DB_USER
+      - --pass
+      - $DB_PASSWORD
+      - file://database.db
+    # command: start --log debug --user root --pass root file://database.db
+    image: surrealdb/surrealdb:latest
+    # volumes:
+    # - ./database/:/
+    # - ./mongo/configdb:/data/configdb
+    # - ./mongo/backup:/data/backup
+    volumes:
+      # - ./data:/data/
+      - ./data/database.db:/database.db
+    ports:
+      - 8000:8000
+    networks:
+      - surreal-net
+
+networks:
+  surreal-net:
+    name: surreal-net
