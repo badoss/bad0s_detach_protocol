@@ -13,14 +13,9 @@ services:
       - --pass
       - $DB_PASSWORD
       - file://database.db
-    # command: start --log debug --user root --pass root file://database.db
     image: surrealdb/surrealdb:latest
-    # volumes:
-    # - ./database/:/
-    # - ./mongo/configdb:/data/configdb
-    # - ./mongo/backup:/data/backup
+
     volumes:
-      # - ./data:/data/
       - ./data/database.db:/database.db
     ports:
       - 8000:8000
